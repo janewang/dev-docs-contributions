@@ -1,0 +1,263 @@
+.app {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin: 20px 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.header h1 {
+  color: #333;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+}
+
+.date-range {
+  color: #888;
+  font-size: 0.95em;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.subtitle a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.subtitle a:hover {
+  text-decoration: underline;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2em;
+}
+
+.error {
+  color: #d32f2f;
+}
+
+.error button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.error button:hover {
+  background: #5568d3;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.summary-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card h3 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat.total {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  padding-top: 15px;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.stat-value {
+  display: block;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.chart-container {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container.full-width {
+  grid-column: 1 / -1;
+}
+
+.chart-container h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.details-section {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 2px solid #e0e0e0;
+}
+
+.details-section h2 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2em;
+}
+
+.owner-details {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.owner-details h3 {
+  color: #667eea;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.activity-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.activity-group h4 {
+  color: #555;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.activity-group ul {
+  list-style: none;
+}
+
+.activity-group li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 5px;
+  border-left: 3px solid #667eea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity-group a {
+  color: #333;
+  text-decoration: none;
+  flex: 1;
+}
+
+.activity-group a:hover {
+  color: #667eea;
+  text-decoration: underline;
+}
+
+.date {
+  color: #999;
+  font-size: 0.9em;
+  margin-left: 10px;
+}
+
+.footer {
+  text-align: center;
+  padding-top: 30px;
+  margin-top: 40px;
+  border-top: 2px solid #e0e0e0;
+  color: #666;
+}
+
+.refresh-btn {
+  margin-top: 15px;
+  padding: 12px 24px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s;
+}
+
+.refresh-btn:hover {
+  background: #5568d3;
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 1.8em;
+  }
+
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat.total {
+    grid-column: 1 / -1;
+  }
+}
+
