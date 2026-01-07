@@ -94,11 +94,19 @@
   color: white;
   text-decoration: none;
   transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .summary-card .owner-link:hover {
   opacity: 0.8;
   text-decoration: underline;
+}
+
+.summary-card .github-icon {
+  flex-shrink: 0;
+  opacity: 0.9;
 }
 
 .rank-badge {
@@ -122,6 +130,17 @@
 
 .stat {
   text-align: center;
+}
+
+.stat-link {
+  color: white;
+  text-decoration: none;
+  display: block;
+  transition: opacity 0.3s;
+}
+
+.stat-link:hover {
+  opacity: 0.8;
 }
 
 .stat.total {
@@ -198,11 +217,23 @@
   color: #667eea;
   text-decoration: none;
   transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .owner-details .owner-link-details:hover {
   color: #5568d3;
   text-decoration: underline;
+}
+
+.owner-details .github-icon-details {
+  flex-shrink: 0;
+  color: #667eea;
+}
+
+.owner-details .owner-link-details:hover .github-icon-details {
+  color: #5568d3;
 }
 
 .activity-list {
