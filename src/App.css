@@ -85,6 +85,33 @@
   font-size: 1.5em;
   margin-bottom: 20px;
   text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summary-card .owner-link {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.summary-card .owner-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  font-size: 0.9em;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .stats {
@@ -167,6 +194,17 @@
   text-transform: capitalize;
 }
 
+.owner-details .owner-link-details {
+  color: #667eea;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.owner-details .owner-link-details:hover {
+  color: #5568d3;
+  text-decoration: underline;
+}
+
 .activity-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -219,8 +257,15 @@
   color: #666;
 }
 
-.refresh-btn {
+.footer-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
   margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.refresh-btn {
   padding: 12px 24px;
   background: #667eea;
   color: white;
@@ -233,6 +278,14 @@
 
 .refresh-btn:hover {
   background: #5568d3;
+}
+
+.refresh-btn.force-refresh {
+  background: #f5576c;
+}
+
+.refresh-btn.force-refresh:hover {
+  background: #e0455a;
 }
 
 @media (max-width: 768px) {

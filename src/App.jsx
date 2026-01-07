@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement } from 'chart.js'
 import { Bar, Line, Doughnut } from 'react-chartjs-2'
 import './App.css'
-import { fetchContributions } from './services/githubApi'
+import { fetchContributions, clearContributionsCache } from './services/githubApi'
 
 ChartJS.register(
   CategoryScale,
@@ -93,11 +93,11 @@ function App() {
     loadContributions()
   }, [])
 
-  const loadContributions = async () => {
+  const loadContributions = async (forceRefresh = false) => {
     setLoading(true)
     setError(null)
     try {
-      const data = await fetchContributions(REPO, OWNERS)
+      const data = await fetchContributions(REPO, OWNERS, null, !forceRefresh)
       setContributions(data)
     } catch (err) {
       setError(err.message)
@@ -105,6 +105,11 @@ function App() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleForceRefresh = () => {
+    clearContributionsCache(REPO, OWNERS)
+    loadContributions(true)
   }
 
   if (loading) {
@@ -133,8 +138,14 @@ function App() {
 
   const { commits, pullRequests, issues, reviews, summary } = contributions
 
+  // Sort owners by total contributions (descending order)
+  const ownerNames = [...OWNERS].sort((a, b) => {
+    const totalA = summary[a]?.total || 0
+    const totalB = summary[b]?.total || 0
+    return totalB - totalA // Descending order
+  })
+
   // Prepare data for charts
-  const ownerNames = OWNERS
   const commitsData = ownerNames.map(owner => commits[owner]?.length || 0)
   const prsData = ownerNames.map(owner => pullRequests[owner]?.length || 0)
   const issuesData = ownerNames.map(owner => issues[owner]?.length || 0)
@@ -225,7 +236,16 @@ function App() {
             className="summary-card"
             style={{ background: CARD_GRADIENTS[idx % CARD_GRADIENTS.length] }}
           >
-            <h3>{owner}</h3>
+            <h3>
+              <a 
+                href={`https://github.com/${owner}`} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="owner-link"
+              >
+                {owner}
+              </a>
+            </h3>
             <div className="stats">
               <div className="stat">
                 <span className="stat-value">{summary[owner]?.commits || 0}</span>
@@ -316,7 +336,16 @@ function App() {
         <h2>Recent Activity</h2>
         {ownerNames.map(owner => (
           <div key={owner} className="owner-details">
-            <h3>{owner}</h3>
+            <h3>
+              <a 
+                href={`https://github.com/${owner}`} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="owner-link-details"
+              >
+                {owner}
+              </a>
+            </h3>
             <div className="activity-list">
               <div className="activity-group">
                 <h4>Recent Commits ({commits[owner]?.length || 0})</h4>
